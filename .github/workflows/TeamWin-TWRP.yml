@@ -94,6 +94,7 @@ jobs:
     - name: Prepare the environment
       run: |
         sudo apt-get update
+        
         sudo apt-get install -y \
           build-essential bc flex bison gperf zip curl zlib1g-dev \
           g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev \
