@@ -200,6 +200,18 @@ jobs:
     - name: Set Build Date # Output will be use in Release
       run: |
         echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+
+    - name: 上传至发布版
+      uses: softprops/action-gh-release@v1
+      with:
+          files: |
+            # 使用通配符搜索，避开相对路径层级的坑
+            **/out/target/product/pucci/recovery.img
+            **/out/target/product/pucci/*.zip
+          tag_name: ${{ github.run_id }}
+          body: "适用于 Pucci 的非官方 TWRP 编译完成"
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Upload to Release
       uses: softprops/action-gh-release@master
