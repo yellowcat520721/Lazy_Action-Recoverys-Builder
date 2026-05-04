@@ -206,6 +206,7 @@ jobs:
       with:
           files: |
             # 使用通配符搜索，避开相对路径层级的坑
+            out/target/product/pucci/recovery.img
             **/out/target/product/pucci/recovery.img
             **/out/target/product/pucci/*.zip
           tag_name: ${{ github.run_id }}
